@@ -1,2 +1,4 @@
+log.error.scripts_dir_missing=Scripts directory invalid or missing & unable to create!
+
 command.reload.usage=/reload or /rl
 command.reload.text=Reloading scripts...

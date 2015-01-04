@@ -10,19 +10,19 @@ import org.apache.logging.log4j.Logger
 object Util {
   var log: Logger = null
 
-  def getResourceStream(resource: String) = getResource(resource).getInputStream
+  def dirExistsOrMake(dir: File) = dir.isDirectory && (dir.exists || dir.mkdirs())
 
-  def getResource(resource: String) = getResourceManager.getResource(getResourceLocation(resource))
+  def getResourceStream(res: String) = getResource(res).getInputStream
+
+  def getResource(res: String) = getResourceManager.getResource(getResourceLocation(res))
 
   def getResourceManager = getMinecraft.getResourceManager
 
   def getMinecraft = Minecraft.getMinecraft
 
-  def getResourceLocation(resource: String) = new ResourceLocation(AdaptMod.ModId, resource)
-
-  def getScriptsDirectory = new File(getMinecraftDirectory, "adapt")
+  def getResourceLocation(res: String) = new ResourceLocation(AdaptMod.ModId, res)
 
   def getMinecraftDirectory = Minecraft.getMinecraft.mcDataDir
 
-  def translateString(string: String) = I18n.format(string)
+  def translateString(str: String) = I18n.format(str)
 }
